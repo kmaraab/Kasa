@@ -9,8 +9,12 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />,
     children: [
+      {
+        path: '/*',
+        caseSensitive: true,
+        element: <ErrorPage />,
+      },
       {
         path: '/',
         caseSensitive: true,
@@ -27,6 +31,11 @@ export const router = createBrowserRouter([
         path: '/location/:id',
         caseSensitive: true,
         element: <Location />,
+      },
+      {
+        path: '/error',
+        caseSensitive: true,
+        element: <ErrorPage />,
       },
     ],
   },

@@ -37,7 +37,7 @@ function Location() {
         }
       } catch (e) {
         window.location.href = '/error';
-        // console.log('error');
+        // // console.log('error');
       }
     }
     fetchDataLocation();

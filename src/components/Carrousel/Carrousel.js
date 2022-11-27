@@ -4,15 +4,11 @@ import arrow from '../../assets/images/arrow.png';
 
 function Carrousel({ nbrImg, imgs }) {
   const [indexPivot, setIndexPivot] = useState(0);
-  //   const [nbreImgs, setNbreImg] = useState([]);
-
-  //   for (let i = 0; i < nbrImg; i++) {
-  //     setNbreImg([...nbreImgs, i]);
-  //     console.log(nbreImgs);
-  //   }
 
   function handleClickbutton_droite() {
-    if (indexPivot > -nbrImg + 1) {
+    if (indexPivot === -nbrImg + 1) {
+      setIndexPivot(0);
+    } else if (indexPivot > -nbrImg + 1) {
       setIndexPivot(indexPivot - 1);
     }
   }
@@ -20,6 +16,8 @@ function Carrousel({ nbrImg, imgs }) {
   function handleClickbutton_gauche() {
     if (indexPivot < 0) {
       setIndexPivot(indexPivot + 1);
+    } else if (indexPivot === 0) {
+      setIndexPivot(-nbrImg + 1);
     }
   }
 
@@ -38,22 +36,18 @@ function Carrousel({ nbrImg, imgs }) {
           />
         ))}
       </div>
-      {indexPivot === -nbrImg + 1 ? null : (
-        <img
-          onClick={handleClickbutton_droite}
-          src={arrow}
-          className={`${styles.bouton} ${styles.boutonDroite}`}
-          alt="bouton_droite"
-        />
-      )}
-      {indexPivot === 0 ? null : (
-        <img
-          onClick={handleClickbutton_gauche}
-          src={arrow}
-          className={`${styles.bouton} ${styles.boutonGauche}`}
-          alt="bouton_gauche"
-        />
-      )}
+      <img
+        onClick={handleClickbutton_droite}
+        src={arrow}
+        className={`${styles.bouton} ${styles.boutonDroite}`}
+        alt="bouton_droite"
+      />
+      <img
+        onClick={handleClickbutton_gauche}
+        src={arrow}
+        className={`${styles.bouton} ${styles.boutonGauche}`}
+        alt="bouton_gauche"
+      />
       <div className={styles.indexActif}>
         {-indexPivot + 1}/{nbrImg}
       </div>
